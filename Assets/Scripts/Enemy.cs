@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     public float speed;
     public GameObject Player;
     private float distance;
+    
+    SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,6 +19,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        double time = Time.realtimeSinceStartupAsDouble;
+        if (time > 10)
+        {
+            enemy_move();
+        }
+    }
+    void enemy_move()
+    {
         distance = Vector2.Distance(transform.position, Player.transform.position);
         Vector2 direction = Player.transform.position - transform.position;
         direction.Normalize();
@@ -24,5 +34,6 @@ public class Enemy : MonoBehaviour
         float float_angle = (float)angle;
         transform.position = Vector2.MoveTowards(this.transform.position, Player.transform.position, speed * Time.deltaTime);
         transform.rotation = quaternion.Euler(Vector3.forward * float_angle);
+        double time = Time.realtimeSinceStartupAsDouble;
     }
 }
