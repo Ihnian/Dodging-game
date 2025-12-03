@@ -1,14 +1,17 @@
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     InputController inputActions;
     CharacterController characterController;
+    BoxCollider boxCollider;
     public GameObject enemy;
     public float speed;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        boxCollider = GetComponent<BoxCollider>();
     }
     void Awake()
     {
@@ -35,5 +38,9 @@ public class Player : MonoBehaviour
         move = move.normalized;
         Vector3 FinalMove = (move * speed);
         characterController.Move(FinalMove * Time.deltaTime);
+    }
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.Log("trafion spedalony");
     }
 }
