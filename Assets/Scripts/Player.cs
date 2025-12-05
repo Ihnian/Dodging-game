@@ -5,13 +5,16 @@ public class Player : MonoBehaviour
 {
     InputController inputActions;
     CharacterController characterController;
-    BoxCollider boxCollider;
+    Rigidbody2D rb;
     public GameObject enemy;
+    public GameObject Player2;
+    public GameObject tekst;
+    private bool colliding;
     public float speed;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        boxCollider = GetComponent<BoxCollider>();
+        rb = GetComponent<Rigidbody2D>();
     }
     void Awake()
     {
@@ -32,15 +35,17 @@ public class Player : MonoBehaviour
         {
             enemy.SetActive(true);
         }
-        Vector2 moveInput = inputActions.Movement.movement.ReadValue<Vector2>();
-        Vector3 move = new Vector3(moveInput.x, moveInput.y, 0);
-        move = Vector3.ClampMagnitude(move, 1f);
-        move = move.normalized;
-        Vector3 FinalMove = (move * speed);
-        characterController.Move(FinalMove * Time.deltaTime);
+        Vector3 moveInput = inputActions.Movement.movement.ReadValue<Vector2>();
+        moveInput = moveInput.normalized;
+        rb.MovePosition(transform.position + moveInput * Time.fixedDeltaTime * speed);
+
     }
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("trafion spedalony");
+        if (collision.gameObject.name == "Enemy")
+        {
+            Player2.SetActive(false);
+            tekst.SetActive(true);
+        }
     }
 }
