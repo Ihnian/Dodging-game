@@ -1,5 +1,6 @@
 using System;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Timeline;
 using UnityEngine.UIElements;
@@ -9,11 +10,17 @@ public class Enemy : MonoBehaviour
     public float speed;
     public GameObject Player;
     private float distance;
+    public GameObject otherObject;
+    private Vector2 otherSize;
     
     SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        SpriteRenderer sr = otherObject.GetComponent<SpriteRenderer>();
+        otherSize = sr.bounds.size;
+        Vector2 position = new Vector2(UnityEngine.Random.Range(0, otherSize.x), UnityEngine.Random.Range(0, otherSize.y));
+        transform.position = position;
     }
 
     // Update is called once per frame
