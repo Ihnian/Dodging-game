@@ -1,5 +1,6 @@
 using NUnit.Framework.Internal;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
@@ -33,13 +34,20 @@ public class Player : MonoBehaviour
         double time = Time.realtimeSinceStartupAsDouble;
         if (time > 10)
         {
-            enemy.SetActive(true);
+            GameObject copy = Instantiate(enemy);
+            copy.SetActive(true);
+        }
+        else if(time > 20)
+        {
+            GameObject copy = Instantiate(enemy);
+            copy.SetActive(true);
         }
         Vector3 moveInput = inputActions.Movement.movement.ReadValue<Vector2>();
         moveInput = moveInput.normalized;
         rb.MovePosition(transform.position + moveInput * Time.fixedDeltaTime * speed);
 
     }
+    /*
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Enemy")
@@ -48,4 +56,5 @@ public class Player : MonoBehaviour
             tekst.SetActive(true);
         }
     }
+    */
 }
