@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     {
         inputActions.Disable();
     }
-    void Update()
+    void FixedUpdate()
     {
         double time = Time.realtimeSinceStartupAsDouble;
         if (time > 10)
