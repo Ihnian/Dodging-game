@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public GameObject tekst;
     private bool colliding;
     public float speed;
+    private int liczba;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -32,15 +33,11 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         double time = Time.realtimeSinceStartupAsDouble;
-        if (time > 10)
+        liczba++;
+        if (liczba == 10 || liczba == 5)
         {
-            GameObject copy = Instantiate(enemy);
-            copy.SetActive(true);
-        }
-        else if(time > 20)
-        {
-            GameObject copy = Instantiate(enemy);
-            copy.SetActive(true);
+            GameObject enemy_copy = Instantiate(enemy);
+            enemy_copy.SetActive(true);
         }
         Vector3 moveInput = inputActions.Movement.movement.ReadValue<Vector2>();
         moveInput = moveInput.normalized;

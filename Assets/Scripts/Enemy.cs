@@ -19,18 +19,14 @@ public class Enemy : MonoBehaviour
     {
         SpriteRenderer sr = otherObject.GetComponent<SpriteRenderer>();
         otherSize = sr.bounds.size;
-        Vector2 position = new Vector2(UnityEngine.Random.Range(0, otherSize.x), UnityEngine.Random.Range(0, otherSize.y));
+        Vector2 position = new Vector2(UnityEngine.Random.Range(0, 10), UnityEngine.Random.Range(0, 10));
         transform.position = position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        double time = Time.realtimeSinceStartupAsDouble;
-        if (time > 10)
-        {
-            enemy_move();
-        }
+        enemy_move();
     }
     void enemy_move()
     {
