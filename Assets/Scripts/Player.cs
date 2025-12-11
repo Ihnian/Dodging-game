@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     {
         double time = Time.realtimeSinceStartupAsDouble;
         liczba++;
-        if (liczba == 10 || liczba == 5)
+        if (liczba == 300 || liczba == 200)
         {
             GameObject enemy_copy = Instantiate(enemy);
             enemy_copy.SetActive(true);

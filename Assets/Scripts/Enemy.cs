@@ -18,9 +18,11 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         SpriteRenderer sr = otherObject.GetComponent<SpriteRenderer>();
-        otherSize = sr.bounds.size;
-        Vector2 position = new Vector2(UnityEngine.Random.Range(0, 10), UnityEngine.Random.Range(0, 10));
-        transform.position = position;
+        Bounds b = sr.bounds;
+        float x = UnityEngine.Random.Range(b.min.x, b.max.x);
+        float y = UnityEngine.Random.Range(b.min.y, b.max.y);
+
+        transform.position = new Vector2(x, y);
     }
 
     // Update is called once per frame
