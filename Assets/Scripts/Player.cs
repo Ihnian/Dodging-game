@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public GameObject enemy;
     public GameObject Player2;
     public GameObject tekst;
+    public GameObject timer;
     private bool colliding;
     public float speed;
     private int liczba;
@@ -32,7 +33,6 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        double time = Time.realtimeSinceStartupAsDouble;
         liczba++;
         if (liczba == 300 || liczba == 200)
         {
@@ -44,14 +44,13 @@ public class Player : MonoBehaviour
         rb.MovePosition(transform.position + moveInput * Time.fixedDeltaTime * speed);
 
     }
-    /*
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Enemy")
+        if (collision.gameObject.name == "Enemy(Clone)")
         {
             Player2.SetActive(false);
             tekst.SetActive(true);
+            timer.SetActive(false);
         }
     }
-    */
 }
