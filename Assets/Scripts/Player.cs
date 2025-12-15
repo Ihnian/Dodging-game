@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public GameObject Player2;
     public GameObject tekst;
     public GameObject timer;
+    public GameObject settings;
     private bool colliding;
     public float speed;
     private int liczba;
@@ -33,6 +34,10 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (inputActions.Movement.esc.IsPressed())
+        {
+            settings.SetActive(true);
+        }
         liczba++;
         if (liczba == 300 || liczba == 200)
         {
