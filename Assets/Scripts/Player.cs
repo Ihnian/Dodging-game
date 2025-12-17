@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     private bool colliding;
     public float speed;
     private int liczba;
+    private bool liczba2 ;
+    int i = 1;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -37,6 +39,10 @@ public class Player : MonoBehaviour
         if (inputActions.Movement.esc.IsPressed())
         {
             settings.SetActive(true);
+        }
+        if (inputActions.Movement.esc.IsPressed() && settings.activeSelf)
+        {
+            settings.SetActive(false);
         }
         liczba++;
         if (liczba == 300 || liczba == 200)
