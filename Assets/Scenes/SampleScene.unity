@@ -635,7 +635,7 @@ MonoBehaviour:
   Player2: {fileID: 519638321}
   tekst: {fileID: 1071007896}
   timer: {fileID: 1377544925}
-  settings: {fileID: 0}
+  settings: {fileID: 931897979}
   speed: 5
 --- !u!61 &519638327
 BoxCollider2D:
@@ -1131,7 +1131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &931897980
 MonoBehaviour:
   m_ObjectHideFlags: 0

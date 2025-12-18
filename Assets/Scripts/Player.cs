@@ -1,5 +1,6 @@
 using NUnit.Framework.Internal;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
@@ -36,14 +37,11 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (inputActions.Movement.esc.IsPressed())
+        if (inputActions.Movement.esc.triggered)
         {
             settings.SetActive(true);
         }
-        if (inputActions.Movement.esc.IsPressed() && settings.activeSelf)
-        {
-            settings.SetActive(false);
-        }
+        if (inputActions.Movement.esc.triggered)
         liczba++;
         if (liczba == 300 || liczba == 200)
         {
