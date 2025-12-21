@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     public float speed;
     private int liczba;
     private bool liczba2 ;
-    int i = 1;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -41,13 +40,18 @@ public class Player : MonoBehaviour
         {
             settings.SetActive(true);
         }
-        if (inputActions.Movement.esc.triggered)
+        if (inputActions.Movement.esc2.triggered)
+        {
+            settings.SetActive(false);
+        }
         liczba++;
+        /*
         if (liczba == 300 || liczba == 200)
         {
             GameObject enemy_copy = Instantiate(enemy);
             enemy_copy.SetActive(true);
         }
+        */
         Vector3 moveInput = inputActions.Movement.movement.ReadValue<Vector2>();
         moveInput = moveInput.normalized;
         rb.MovePosition(transform.position + moveInput * Time.fixedDeltaTime * speed);

@@ -109,6 +109,15 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""esc2"",
+                    ""type"": ""Button"",
+                    ""id"": ""c8478602-da53-4ef3-a017-ebcf557dd5b4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""MultiTap(tapTime=0.2,tapDelay=1E+16,pressPoint=0.5)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -177,6 +186,17 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""action"": ""esc"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fbac15e-4615-42fd-8768-380f6fd95ec5"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""esc2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -187,6 +207,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_movement = m_Movement.FindAction("movement", throwIfNotFound: true);
         m_Movement_esc = m_Movement.FindAction("esc", throwIfNotFound: true);
+        m_Movement_esc2 = m_Movement.FindAction("esc2", throwIfNotFound: true);
     }
 
     ~@InputController()
@@ -269,6 +290,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
     private readonly InputAction m_Movement_movement;
     private readonly InputAction m_Movement_esc;
+    private readonly InputAction m_Movement_esc2;
     /// <summary>
     /// Provides access to input actions defined in input action map "Movement".
     /// </summary>
@@ -288,6 +310,10 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Movement/esc".
         /// </summary>
         public InputAction @esc => m_Wrapper.m_Movement_esc;
+        /// <summary>
+        /// Provides access to the underlying input action "Movement/esc2".
+        /// </summary>
+        public InputAction @esc2 => m_Wrapper.m_Movement_esc2;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -320,6 +346,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @esc.started += instance.OnEsc;
             @esc.performed += instance.OnEsc;
             @esc.canceled += instance.OnEsc;
+            @esc2.started += instance.OnEsc2;
+            @esc2.performed += instance.OnEsc2;
+            @esc2.canceled += instance.OnEsc2;
         }
 
         /// <summary>
@@ -337,6 +366,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @esc.started -= instance.OnEsc;
             @esc.performed -= instance.OnEsc;
             @esc.canceled -= instance.OnEsc;
+            @esc2.started -= instance.OnEsc2;
+            @esc2.performed -= instance.OnEsc2;
+            @esc2.canceled -= instance.OnEsc2;
         }
 
         /// <summary>
@@ -391,5 +423,12 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnEsc(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "esc2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEsc2(InputAction.CallbackContext context);
     }
 }
