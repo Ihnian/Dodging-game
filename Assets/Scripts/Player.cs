@@ -16,7 +16,8 @@ public class Player : MonoBehaviour
     private bool colliding;
     public float speed;
     private int liczba;
-    private bool liczba2 ;
+    Vector3 moveInput;
+    private bool UI = false;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -36,26 +37,26 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (inputActions.Movement.esc.triggered)
-        {
-            settings.SetActive(true);
-        }
-        if (inputActions.Movement.esc2.triggered)
-        {
-            settings.SetActive(false);
-        }
         liczba++;
-        /*
+    
         if (liczba == 300 || liczba == 200)
         {
             GameObject enemy_copy = Instantiate(enemy);
             enemy_copy.SetActive(true);
         }
-        */
-        Vector3 moveInput = inputActions.Movement.movement.ReadValue<Vector2>();
+        
+        moveInput = inputActions.Movement.movement.ReadValue<Vector2>();
         moveInput = moveInput.normalized;
         rb.MovePosition(transform.position + moveInput * Time.fixedDeltaTime * speed);
 
+    }
+    void Update()
+    {
+        if (inputActions.Movement.esc.triggered)
+        {
+            UI = !UI;
+            settings.SetActive(UI);
+        }
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
