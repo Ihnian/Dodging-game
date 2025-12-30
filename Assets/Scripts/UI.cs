@@ -3,9 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public GameObject settings;
-    public bool i;
+    // Start is called once before the first execution of Update after the MonoBehaviour is create
+    public GameObject Settings;
     void Start()
     {
         
@@ -18,24 +17,20 @@ public class UI : MonoBehaviour
     {
         Application.Quit();
     }
-    public void Settings()
+    public void Settings_MM()
     {
-        i = true;
-        if (i)
-        {
-            settings.SetActive(true);
-            i = false;       
-        }
-        if (i == false)
-        {
-            settings.SetActive(false);
-            i = true;
-        }
 
     }
     public void MainMenu()
     {
         SceneManager.LoadScene(sceneBuildIndex:1);
+    }
+    public void Settings_GM()
+    {
+        
+    }
+    public void resume(){
+        Settings.SetActive(false);
     }
 
 }

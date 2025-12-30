@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         liczba++;
-    
         if (liczba == 300 || liczba == 200)
         {
             GameObject enemy_copy = Instantiate(enemy);
