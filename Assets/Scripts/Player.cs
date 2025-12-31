@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private int liczba;
     Vector3 moveInput;
     private bool UI = false;
+    private bool Game = true;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -37,25 +38,35 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        liczba++;
-        if (liczba == 300 || liczba == 200)
+        if (Game)
         {
-            GameObject enemy_copy = Instantiate(enemy);
-            enemy_copy.SetActive(true);
+            movement();
+            spawn();
         }
-        
-        moveInput = inputActions.Movement.movement.ReadValue<Vector2>();
-        moveInput = moveInput.normalized;
-        rb.MovePosition(transform.position + moveInput * Time.fixedDeltaTime * speed);
-
     }
     void Update()
     {
         if (inputActions.Movement.esc.triggered)
         {
             UI = !UI;
+            Game = !Game;
             settings.SetActive(UI);
         }
+    }
+    private void spawn()
+    {
+        liczba++;
+        if (liczba == 300 || liczba == 200)
+        {
+            GameObject enemy_copy = Instantiate(enemy);
+            enemy_copy.SetActive(true);
+        }
+    }
+    private void movement()
+    {
+        moveInput = inputActions.Movement.movement.ReadValue<Vector2>();
+        moveInput = moveInput.normalized;
+        rb.MovePosition(transform.position + moveInput * Time.fixedDeltaTime * speed);
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
