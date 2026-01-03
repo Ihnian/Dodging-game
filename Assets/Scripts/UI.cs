@@ -5,6 +5,7 @@ public class UI : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is create
     public GameObject Settings;
+    public Player player;
     void Start()
     {
         
@@ -31,6 +32,7 @@ public class UI : MonoBehaviour
     }
     public void resume(){
         Settings.SetActive(false);
+        player.Game = true;
     }
 
 }

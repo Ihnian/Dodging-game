@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private int liczba;
     Vector3 moveInput;
     private bool UI = false;
-    private bool Game = true;
+    public bool Game = true;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (Game)
+        if (Game == true)
         {
             movement();
             spawn();
