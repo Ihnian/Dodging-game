@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     Vector3 moveInput;
     private bool UI = false;
     public bool Game = true;
+    public Enemy enemy2;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
     {
         if (inputActions.Movement.esc.triggered)
         {
+            enemy2.enemy_move_var = !enemy2.enemy_move_var;
             UI = !UI;
             Game = !Game;
             settings.SetActive(UI);
@@ -64,6 +66,7 @@ public class Player : MonoBehaviour
     }
     private void movement()
     {
+        
         moveInput = inputActions.Movement.movement.ReadValue<Vector2>();
         moveInput = moveInput.normalized;
         rb.MovePosition(transform.position + moveInput * Time.fixedDeltaTime * speed);

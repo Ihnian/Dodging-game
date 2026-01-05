@@ -1027,6 +1027,7 @@ MonoBehaviour:
   timer: {fileID: 1377544925}
   settings: {fileID: 931897979}
   speed: 5
+  Game: 1
 --- !u!61 &519638327
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1620,6 +1621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI
   Settings: {fileID: 931897979}
+  player: {fileID: 519638326}
 --- !u!1 &965683313
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private float distance;
     public GameObject otherObject;
     private Vector2 otherSize;
+    public bool enemy_move_var = true;
     
     SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,7 +29,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enemy_move();
+        if (enemy_move_var == true)
+        {
+            enemy_move();    
+        }
     }
     void enemy_move()
     {
